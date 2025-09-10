@@ -27,6 +27,10 @@ while True:
             # Will draw the hand landmarks on the frame on the image in the video idk why I worded it like that lol
             mp_drawing.draw_landmarks(img, hand_landmarks, mp_hands.HAND_CONNECTIONS)
 
+            h, w, c = img.shape
+            x,y = int(hand_landmarks.landmark[0].x * w), int(hand_landmarks.landmark[0].y * h)
+            cv.putText(img, hand_label,(x,y-20), cv.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
+
     
     cv.imshow('img', img)
     k = cv.waitKey(30) & 0xff
